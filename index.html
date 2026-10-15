@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo de Broches para Autos</title>
+    
+    <!-- Librería para usar el logo de WhatsApp -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
         /* --- PALETA DE COLORES VIOLETAS --- */
         :root {
@@ -105,27 +109,47 @@
             width: 100%;
             height: 150px;
             object-fit: cover;
-            background-color: #ccc; /* Fondo temporal para las fotos */
+            background-color: #ccc;
             border-radius: 4px;
             margin-bottom: 10px;
         }
 
+        /* --- FOTO DEL LOCAL --- */
+        .foto-local {
+            width: 100%;
+            max-width: 600px; /* Tamaño máximo para que no ocupe toda la pantalla en PC */
+            display: block;
+            margin: 0 auto 20px auto; /* Centrado */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            object-fit: cover;
+        }
+
         /* --- BOTÓN DE WHATSAPP --- */
         .btn-whatsapp {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px; /* Espacio entre el logo y el texto */
             background-color: #25D366;
             color: white;
-            padding: 12px 24px;
+            padding: 15px 30px;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 50px; /* Bordes más redondeados */
             font-weight: bold;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             margin-top: 10px;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 6px rgba(37, 211, 102, 0.3);
         }
 
         .btn-whatsapp:hover {
             background-color: #128C7E;
+            transform: translateY(-2px); /* Pequeño efecto al pasar el mouse */
+        }
+
+        .btn-whatsapp i {
+            font-size: 1.5rem; /* Logo un poco más grande */
         }
 
         .info-contacto {
@@ -179,7 +203,6 @@
             <div class="catalogo-grid">
                 <!-- Producto de ejemplo 1 -->
                 <div class="producto">
-                    <!-- Reemplazar el src con la ruta de tu foto real -->
                     <img src="foto-broche-1.jpg" alt="Foto de broche">
                     <h3>Broche Panel Puerta</h3>
                     <p>Varias marcas</p>
@@ -204,6 +227,11 @@
         <!-- SECCIÓN: UBICACIÓN Y HORARIOS -->
         <div id="ubicacion" class="seccion">
             <h2>Ubicación y Horarios de Atención</h2>
+            
+            <!-- FOTO DEL LOCAL AQUÍ -->
+            <!-- Cambia "mi-local.jpg" por el nombre de tu foto real -->
+            <img src="mi-local.jpg" alt="Frente de nuestro local en Alvear 264" class="foto-local">
+
             <div class="info-contacto">
                 <p>📍 <strong>Dirección:</strong> Alvear 264</p>
                 <p>🕒 <strong>Horarios:</strong><br>
@@ -212,7 +240,7 @@
             </div>
             
             <div class="mapa-container">
-                <!-- Mapa de Google Maps apuntando a Alvear 2064, Comodoro Rivadavia -->
+                <!-- Mapa de Google Maps apuntando a Alvear 264, Comodoro Rivadavia -->
                 <iframe src="https://www.google.com/maps?q=Alvear+264,Comodoro+Rivadavia,Chubut,Argentina&output=embed" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
@@ -222,9 +250,9 @@
             <h2>Contáctanos</h2>
             <p>¿No estás seguro de cuál broche llevas? Escríbenos, no te olvides de adjuntar la foto.</p>
             
-            <!-- El enlace de WhatsApp ya tiene pre-escrito un mensaje de saludo -->
-            <a href="https://wa.me/2974005130?text=Hola,%20les%20escribo%20desde%20la%20página%20web.%20Tengo%20una%20consulta%20por%20un%20broche%20y%20les%20adjunto%20una%20foto:" class="btn-whatsapp" target="_blank">
-                💬 Consultar por WhatsApp a este número (297-400-5130)
+            <!-- Enlace con el 549 agregado, icono de WhatsApp y texto más directo -->
+            <a href="https://wa.me/5492974005130?text=Hola,%20les%20escribo%20desde%20la%20página%20web.%20Tengo%20una%20consulta%20por%20un%20broche%20y%20les%20adjunto%20una%20foto:" class="btn-whatsapp" target="_blank">
+                <i class="fab fa-whatsapp"></i> Contáctanos por WhatsApp
             </a>
         </div>
 
