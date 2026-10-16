@@ -96,5 +96,135 @@
             display: block;
             margin: 0 auto 20px auto; /* Centrado */
             border-radius: 8px;
-            box-shadow: 0 4
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            object-fit: cover;
+        }
+
+        /* --- BOTÓN DE WHATSAPP --- */
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px; /* Espacio entre el logo y el texto */
+            background-color: #25D366;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px; /* Bordes redondeados */
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 10px;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 6px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px); /* Pequeño efecto al pasar el mouse */
+        }
+
+        .btn-whatsapp i {
+            font-size: 1.5rem; /* Logo un poco más grande */
+        }
+
+        .info-contacto {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .mapa-container iframe {
+            width: 100%;
+            height: 350px;
+            border: none;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        footer {
+            background-color: var(--violeta-oscuro);
+            color: var(--blanco);
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Broches para Autos</h1>
+        <p>Encuentra el repuesto exacto que necesitas para tu vehículo</p>
+    </header>
+
+    <nav>
+        <a href="#catalogo">Catálogo</a>
+        <a href="#ubicacion">Ubicación y Horarios</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+
+    <div class="container">
+        
+        <!-- AVISO IMPORTANTE DEL DUEÑO -->
+        <div class="aviso-importante">
+            <strong>📸 ¡IMPORTANTE PARA TUS CONSULTAS!</strong>
+            Para poder brindarte una atención más rápida y precisa, cuando nos escribas por WhatsApp <b>por favor envíanos una foto del broche o pieza que estás buscando</b>.
+        </div>
+
+        <!-- SECCIÓN: CATÁLOGO EN PDF -->
+        <div id="catalogo" class="seccion" style="text-align: center;">
+            <h2>Nuestro Catálogo Completo</h2>
+            <p>Explora todos nuestros modelos y códigos. Si encuentras el tuyo, anota el número o sácale captura y envíanoslo por WhatsApp.</p>
             
+            <!-- Botón para descargar o abrir en celular -->
+            <a href="CLIPS.pdf" target="_blank" class="btn-whatsapp" style="background-color: var(--violeta-medio); box-shadow: none;">
+                <i class="fas fa-file-pdf"></i> Ver Catálogo Completo (PDF)
+            </a>
+
+            <!-- Visor del PDF integrado en la página (Ideal para PC) -->
+            <div style="margin-top: 30px;">
+                <iframe src="CLIPS.pdf" width="100%" height="600px" style="border: 2px solid var(--violeta-medio); border-radius: 8px;">
+                    <!-- Mensaje alternativo si el navegador no soporta iframes -->
+                    <p>Tu navegador no puede mostrar el PDF aquí. <a href="CLIPS.pdf">Haz clic aquí para descargarlo</a>.</p>
+                </iframe>
+            </div>
+        </div>
+
+        <!-- SECCIÓN: UBICACIÓN Y HORARIOS -->
+        <div id="ubicacion" class="seccion">
+            <h2>Ubicación y Horarios de Atención</h2>
+            
+            <!-- FOTO DEL LOCAL AQUÍ -->
+            <img src="mi-local.jpg" alt="Frente de nuestro local en Alvear 264" class="foto-local">
+
+            <div class="info-contacto">
+                <p>📍 <strong>Dirección:</strong> Alvear 264</p>
+                <p>🕒 <strong>Horarios:</strong><br>
+                   - Lunes a Viernes: 10:00 a 17:00 hs<br>
+                   - Sábados: 10:00 a 13:00 hs</p>
+            </div>
+            
+            <div class="mapa-container">
+                <!-- Mapa de Google Maps apuntando a Alvear 264, Comodoro Rivadavia -->
+                <iframe src="https://www.google.com/maps?q=Alvear+264,Comodoro+Rivadavia,Chubut,Argentina&output=embed" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+
+        <!-- SECCIÓN: CONTACTO -->
+        <div id="contacto" class="seccion" style="text-align: center;">
+            <h2>Contáctanos</h2>
+            <p>¿No estás seguro de cuál broche llevas? Escríbenos, no te olvides de adjuntar la foto.</p>
+            
+            <!-- Enlace de WhatsApp -->
+            <a href="https://wa.me/5492974005130?text=Hola,%20les%20escribo%20desde%20la%20página%20web.%20Tengo%20una%20consulta%20por%20un%20broche%20y%20les%20adjunto%20una%20foto:" class="btn-whatsapp" target="_blank">
+                <i class="fab fa-whatsapp"></i> Contáctanos por WhatsApp
+            </a>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Broches para Autos - Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
