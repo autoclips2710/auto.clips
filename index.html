@@ -4,12 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo de Broches para Autos</title>
-    
-    <!-- Librería para usar el logo de WhatsApp -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* --- PALETA DE COLORES VIOLETAS --- */
         :root {
             --violeta-oscuro: #4a148c;
             --violeta-medio: #7b1fa2;
@@ -61,7 +58,6 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
 
-        /* --- ESTILOS DEL AVISO IMPORTANTE --- */
         .aviso-importante {
             background-color: #fff3cd;
             color: #856404;
@@ -79,17 +75,35 @@
             margin-bottom: 5px;
         }
 
-        .seccion {
-            margin-bottom: 40px;
-        }
-
+        .seccion { margin-bottom: 40px; }
         .seccion h2 {
             color: var(--violeta-oscuro);
             border-bottom: 2px solid var(--violeta-medio);
             padding-bottom: 5px;
         }
 
-        /* --- GRILLA DEL CATÁLOGO --- */
+        /* --- ESTILOS DEL BUSCADOR --- */
+        .buscador-container {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        #buscador {
+            width: 80%;
+            max-width: 500px;
+            padding: 12px 20px;
+            font-size: 1.1rem;
+            border: 2px solid var(--violeta-medio);
+            border-radius: 25px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        #buscador:focus {
+            border-color: var(--violeta-oscuro);
+            box-shadow: 0 0 8px rgba(74, 20, 140, 0.3);
+        }
+
         .catalogo-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -103,7 +117,10 @@
             padding: 15px;
             text-align: center;
             background-color: #fafafa;
+            transition: transform 0.2s;
         }
+
+        .producto:hover { transform: scale(1.03); }
 
         .producto img {
             width: 100%;
@@ -114,28 +131,33 @@
             margin-bottom: 10px;
         }
 
-        /* --- FOTO DEL LOCAL --- */
+        .codigo {
+            font-weight: bold;
+            color: var(--violeta-oscuro);
+            font-size: 1.2rem;
+            margin: 5px 0;
+        }
+
         .foto-local {
             width: 100%;
-            max-width: 600px; /* Tamaño máximo para que no ocupe toda la pantalla en PC */
+            max-width: 600px;
             display: block;
-            margin: 0 auto 20px auto; /* Centrado */
+            margin: 0 auto 20px auto;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             object-fit: cover;
         }
 
-        /* --- BOTÓN DE WHATSAPP --- */
         .btn-whatsapp {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px; /* Espacio entre el logo y el texto */
+            gap: 10px;
             background-color: #25D366;
             color: white;
             padding: 15px 30px;
             text-decoration: none;
-            border-radius: 50px; /* Bordes más redondeados */
+            border-radius: 50px;
             font-weight: bold;
             font-size: 1.2rem;
             margin-top: 10px;
@@ -145,33 +167,13 @@
 
         .btn-whatsapp:hover {
             background-color: #128C7E;
-            transform: translateY(-2px); /* Pequeño efecto al pasar el mouse */
+            transform: translateY(-2px);
         }
 
-        .btn-whatsapp i {
-            font-size: 1.5rem; /* Logo un poco más grande */
-        }
-
-        .info-contacto {
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
-        .mapa-container iframe {
-            width: 100%;
-            height: 350px;
-            border: none;
-            border-radius: 8px;
-            margin-top: 15px;
-        }
-
-        footer {
-            background-color: var(--violeta-oscuro);
-            color: var(--blanco);
-            text-align: center;
-            padding: 15px;
-            margin-top: 40px;
-        }
+        .btn-whatsapp i { font-size: 1.5rem; }
+        .info-contacto { font-size: 1.1rem; line-height: 1.6; }
+        .mapa-container iframe { width: 100%; height: 350px; border: none; border-radius: 8px; margin-top: 15px; }
+        footer { background-color: var(--violeta-oscuro); color: var(--blanco); text-align: center; padding: 15px; margin-top: 40px; }
     </style>
 </head>
 <body>
@@ -189,68 +191,69 @@
 
     <div class="container">
         
-        <!-- AVISO IMPORTANTE DEL DUEÑO -->
         <div class="aviso-importante">
             <strong>📸 ¡IMPORTANTE PARA TUS CONSULTAS!</strong>
             Para poder brindarte una atención más rápida y precisa, cuando nos escribas por WhatsApp <b>por favor envíanos una foto del broche o pieza que estás buscando</b>.
         </div>
 
-        <!-- SECCIÓN: CATÁLOGO -->
         <div id="catalogo" class="seccion">
             <h2>Nuestro Catálogo</h2>
-            <p>Aquí podrás ver nuestra variedad de broches. Haz clic en el botón de WhatsApp si encuentras el tuyo o necesitas asesoramiento.</p>
+            <p>Usa el buscador para encontrar piezas por código o descripción.</p>
             
-            <div class="catalogo-grid">
-                <!-- Producto de ejemplo 1 -->
+            <!-- BARRA DE BÚSQUEDA -->
+            <div class="buscador-container">
+                <input type="text" id="buscador" placeholder="🔍 Escribe un código (ej: 23061) o nombre...">
+            </div>
+            
+            <div class="catalogo-grid" id="cuadricula-productos">
+                <!-- Productos extraídos de tu PDF -->
                 <div class="producto">
-                    <img src="foto-broche-1.jpg" alt="Foto de broche">
-                    <h3>Broche Panel Puerta</h3>
-                    <p>Varias marcas</p>
+                    <img src="foto-23061.jpg" alt="Broche 23061">
+                    <p class="codigo">23061</p>
+                    <p>Broche Universal Blanco</p>
                 </div>
                 
-                <!-- Producto de ejemplo 2 -->
                 <div class="producto">
-                    <img src="foto-broche-2.jpg" alt="Foto de broche">
-                    <h3>Broche Paragolpes</h3>
-                    <p>Universal</p>
+                    <img src="foto-51187.jpg" alt="Broche 51187">
+                    <p class="codigo">51187</p>
+                    <p>Broche Negro</p>
                 </div>
 
-                <!-- Producto de ejemplo 3 -->
                 <div class="producto">
-                    <img src="foto-broche-3.jpg" alt="Foto de broche">
-                    <h3>Clip Tapizado</h3>
-                    <p>Consultar modelos</p>
+                    <img src="foto-22828.jpg" alt="Tornillo 22828">
+                    <p class="codigo">22828 / 22941</p>
+                    <p>Tornillo largo - Tornillo corto</p>
+                </div>
+
+                <div class="producto">
+                    <img src="foto-22919.jpg" alt="Clip 22919">
+                    <p class="codigo">22919 / 22920</p>
+                    <p>Izquierda - Derecha</p>
+                </div>
+
+                <div class="producto">
+                    <img src="foto-22953.jpg" alt="Embrague 22953">
+                    <p class="codigo">22953</p>
+                    <p>Conjunto embrague Renault 9/11/19</p>
                 </div>
             </div>
         </div>
 
-        <!-- SECCIÓN: UBICACIÓN Y HORARIOS -->
         <div id="ubicacion" class="seccion">
             <h2>Ubicación y Horarios de Atención</h2>
-            
-            <!-- FOTO DEL LOCAL AQUÍ -->
-            <!-- Cambia "mi-local.jpg" por el nombre de tu foto real -->
             <img src="mi-local.jpg" alt="Frente de nuestro local en Alvear 264" class="foto-local">
-
             <div class="info-contacto">
                 <p>📍 <strong>Dirección:</strong> Alvear 264</p>
-                <p>🕒 <strong>Horarios:</strong><br>
-                   - Lunes a Viernes: 10:00 a 17:00 hs<br>
-                   - Sábados: 10:00 a 13:00 hs</p>
+                <p>🕒 <strong>Horarios:</strong><br>- Lunes a Viernes: 10:00 a 17:00 hs<br>- Sábados: 10:00 a 13:00 hs</p>
             </div>
-            
             <div class="mapa-container">
-                <!-- Mapa de Google Maps apuntando a Alvear 264, Comodoro Rivadavia -->
                 <iframe src="https://www.google.com/maps?q=Alvear+264,Comodoro+Rivadavia,Chubut,Argentina&output=embed" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
 
-        <!-- SECCIÓN: CONTACTO -->
         <div id="contacto" class="seccion" style="text-align: center;">
             <h2>Contáctanos</h2>
             <p>¿No estás seguro de cuál broche llevas? Escríbenos, no te olvides de adjuntar la foto.</p>
-            
-            <!-- Enlace con el 549 agregado, icono de WhatsApp y texto más directo -->
             <a href="https://wa.me/5492974005130?text=Hola,%20les%20escribo%20desde%20la%20página%20web.%20Tengo%20una%20consulta%20por%20un%20broche%20y%20les%20adjunto%20una%20foto:" class="btn-whatsapp" target="_blank">
                 <i class="fab fa-whatsapp"></i> Contáctanos por WhatsApp
             </a>
@@ -262,5 +265,28 @@
         <p>&copy; 2026 Broches para Autos - Todos los derechos reservados.</p>
     </footer>
 
+    <!-- SCRIPT DEL BUSCADOR -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const buscador = document.getElementById("buscador");
+            const productos = document.querySelectorAll(".producto");
+
+            buscador.addEventListener("keyup", function() {
+                const textoBusqueda = buscador.value.toLowerCase();
+
+                productos.forEach(function(producto) {
+                    // Obtiene todo el texto dentro de la caja del producto (código y descripción)
+                    const contenidoProducto = producto.textContent.toLowerCase();
+                    
+                    // Si el texto que escribes está en el producto, lo muestra. Si no, lo oculta.
+                    if (contenidoProducto.includes(textoBusqueda)) {
+                        producto.style.display = "block";
+                    } else {
+                        producto.style.display = "none";
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
